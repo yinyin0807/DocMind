@@ -127,6 +127,7 @@ __marimo__/
 
 # Frontend / JS
 node_modules/
+*.tsbuildinfo
 
 # Python tooling
 .mypy_cache/
