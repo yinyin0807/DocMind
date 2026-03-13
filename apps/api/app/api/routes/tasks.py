@@ -1,15 +1,12 @@
-from fastapi import APIRouter
+﻿from fastapi import APIRouter
 
-from app.schemas.task import TaskItem, TaskListResponse
+from app.schemas.task import TaskDetailResponse
+from app.services.task_service import TaskService
 
 router = APIRouter()
-
-_TASKS = [
-    TaskItem(id="task-001", kind="summary", status="pending"),
-    TaskItem(id="task-002", kind="translation", status="pending"),
-]
+_task_service = TaskService()
 
 
-@router.get("", response_model=TaskListResponse)
-def list_tasks() -> TaskListResponse:
-    return TaskListResponse(items=_TASKS)
+@router.get("/tasks/{task_id}", response_model=TaskDetailResponse)
+def get_task(task_id: str) -> TaskDetailResponse:
+    return _task_service.get_task(task_id)

@@ -1,11 +1,19 @@
-from pydantic import BaseModel
+﻿from pydantic import BaseModel
 
 
-class TaskItem(BaseModel):
-    id: str
-    kind: str
+class TaskCreateResponse(BaseModel):
+    task_id: str
+    task_type: str
     status: str
+    target_type: str
+    target_id: str
 
 
-class TaskListResponse(BaseModel):
-    items: list[TaskItem]
+class TaskDetailResponse(BaseModel):
+    id: str
+    task_type: str
+    status: str
+    target_type: str
+    target_id: str
+    result: dict[str, bool | str | int | float | None] | None = None
+    error_message: str | None = None

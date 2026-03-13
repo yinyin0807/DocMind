@@ -137,3 +137,9 @@ dmypy.json
 .pytype/
 cython_debug/
 .pypirc
+
+# Project local databases
+apps/api/*.db
+
+# Local uploaded papers
+storage/papers/

@@ -1,10 +1,12 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
 
 from app.api.router import api_router
+from app.core.bootstrap import init_db
 from app.core.config import settings
 
 
 def create_app() -> FastAPI:
+    init_db()
     app = FastAPI(
         title=settings.app_name,
         version=settings.app_version,
